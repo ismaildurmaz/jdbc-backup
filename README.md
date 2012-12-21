@@ -31,7 +31,9 @@ execute argument can be a file, network or console..
 
 ## Sample
 
+```java
 Backup backup = new Backup(connection);
 print("Backup start time : " + new Date().toString());
 backup.execute(System.out); 
 print("Backup end time : " + new Date().toString());
+```
