@@ -1,6 +1,7 @@
 jdbc-backup
 ===========
 
+## Info
 JDBC Database Backup For MySQL, PostgreSQL, Oracle, SQL Server...
 
 It is simple and fast. 
@@ -9,7 +10,9 @@ It has not been finished yet!! There can be bugs or improvements.
 
 execute argument can be a file, network or console..
 
-For Maven
+## Maven
+
+```xml
 <repositories>
   <repository>
     <id>jdbc-backup</id>
@@ -24,8 +27,9 @@ For Maven
 	  <version>0.0.1</version>
   </dependency>
 </dependencies>
+```
 
-sample :
+## Sample
 
 Backup backup = new Backup(connection);
 print("Backup start time : " + new Date().toString());
