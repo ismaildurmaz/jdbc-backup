@@ -24,7 +24,7 @@ execute argument can be a file, network or console..
   <dependency>
 	  <groupId>com.intenum</groupId>
 	  <artifactId>jdbc-backup</artifactId>
-	  <version>0.0.1</version>
+	  <version>0.0.2</version>
   </dependency>
 </dependencies>
 ```
