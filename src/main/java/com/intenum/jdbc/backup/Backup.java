@@ -1,9 +1,12 @@
 package com.intenum.jdbc.backup;
 
+import java.io.FileInputStream;
 import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import com.intenum.util.db.DataTable;
 import com.intenum.util.db.Row;
@@ -42,6 +45,7 @@ public class Backup {
 		DataTable dataTable = null;
 
 		// get tables
+		tables = new TableCollection();
 		dataTable = DataTable.parse(metaData.getTables(null, null, null, null));
 		for (Row row : dataTable) {
 			tables.add(new Table(row.getString("TABLE_NAME")));
