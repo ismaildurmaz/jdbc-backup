@@ -1,12 +1,9 @@
 package com.intenum.jdbc.backup;
 
-import java.io.FileInputStream;
 import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 import com.intenum.util.db.DataTable;
 import com.intenum.util.db.Row;
@@ -88,18 +85,18 @@ public class Backup {
 			dataTable = DataTable.execute(connection, "select * from " + quote
 					+ table.getName() + quote);
 			if (dataTable.size() > 0) {
-				stream.println("---------------------------------------------");
+				stream.println("-- -------------------------------------------");
 				stream.println("-- " + table.getName());
-				stream.println("---------------------------------------------");
+				stream.println("-- -------------------------------------------");
 
 				if (addEmptyTable) {
-					stream.println("delete * from " + quote + table.getName()
-							+ quote);
+					stream.println("delete  from " + quote + table.getName()
+							+ quote + ";");
 					stream.println();
 				}
 
 				String str = "insert into " + quote + table.getName() + quote
-						+ "(" + quote + table.getColumns().get(0).getName()
+						+ " (" + quote + table.getColumns().get(0).getName()
 						+ quote;
 				for (int i = 1; i < table.getColumns().size(); i++) {
 					str += ", " + quote + table.getColumns().get(i).getName()
@@ -121,8 +118,6 @@ public class Backup {
 					}
 					stream.println(str);
 				}
-				stream.println();
-				stream.println();
 				stream.println();
 			}
 		}
