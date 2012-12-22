@@ -81,19 +81,20 @@ public class Backup {
 
 		tables.sort();
 
+		if (addEmptyTable) {
+			printInfo(stream, "clearing tables");
+			for (int i = tables.size() - 1; i >= 0; i--) {
+				stream.println("delete from " + quote + tables.get(i).getName()
+						+ quote + ";");
+			}
+		}
+
+		printInfo(stream, "inserting tables");
 		for (Table table : tables) {
 			dataTable = DataTable.execute(connection, "select * from " + quote
 					+ table.getName() + quote);
 			if (dataTable.size() > 0) {
-				stream.println("-- -------------------------------------------");
-				stream.println("-- " + table.getName());
-				stream.println("-- -------------------------------------------");
-
-				if (addEmptyTable) {
-					stream.println("delete  from " + quote + table.getName()
-							+ quote + ";");
-					stream.println();
-				}
+				printInfo(stream, table.getName());
 
 				String str = "insert into " + quote + table.getName() + quote
 						+ " (" + quote + table.getColumns().get(0).getName()
@@ -121,6 +122,12 @@ public class Backup {
 				stream.println();
 			}
 		}
+	}
+	
+	private void printInfo(PrintStream stream, String message){
+		stream.println("-- -------------------------------------------");
+		stream.println("-- " + message);
+		stream.println("-- -------------------------------------------");
 	}
 
 	public String getSQLValue(Table table, Row row, int index) {
