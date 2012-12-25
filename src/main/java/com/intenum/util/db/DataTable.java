@@ -58,15 +58,15 @@ public class DataTable extends ArrayList<Row> {
 
 	@Override
 	public String toString() {
-		String s = columns.toString();
+		String s = columns.toString() + "\n";
 		if (size() == 0) {
-			s += "\nRows is empty";
+			s += "Rows is empty\n";
 		} else {
-			s += "\nRows : {" + String.valueOf(get(0));
+			s += "Rows : {" + String.valueOf(get(0));
 			for (int i = 1; i < size(); i++) {
 				s += "\n" + String.valueOf(get(i));
 			}
-			s += "}";
+			s += "}\n";
 		}
 		return s;
 	}

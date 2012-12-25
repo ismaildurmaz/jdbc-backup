@@ -1,5 +1,7 @@
 package com.intenum.util.db;
 
+import java.util.Date;
+
 
 public class Row {
 	private Object[] data;
@@ -30,7 +32,17 @@ public class Row {
 		return Boolean.parseBoolean(getString(index));
 	}
 	
+	public Integer getInteger(int index){
+		return (Integer)(get(index));
+	}
 	
+	public Integer getInteger(String label){
+		return (Integer)(get(label));
+	}
+	
+	public Date getDate(int index){
+		return (Date)get(index);
+	}
 	
 	@Override
 	public String toString() {
